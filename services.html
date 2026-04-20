@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Orly Momongan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+:root{
+  --bg:#07080a;
+  --surface:#0f1117;
+  --card:#161821;
+  --card2:#1c1f2b;
+  --accent:#61BCD6;
+  --accent2:#a8edff;
+  --gold:#f0c060;
+  --white:#f0f2f8;
+  --muted:#8a8fa8;
+  --subtle:#3a3f55;
+  --border:rgba(97,188,214,0.15);
+  --border2:rgba(255,255,255,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 4rem;
+  background:rgba(7,8,10,0.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border2);
+}
+.logo{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;text-decoration:none;color:var(--white);letter-spacing:-.02em;}
+.logo em{font-style:normal;color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);}
+.nav-btn{background:var(--accent);color:#07080a;padding:.5rem 1.2rem;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.nav-btn:hover{background:var(--accent2);}
+
+/* PAGE WRAPPER */
+.page{padding-top:64px;}
+
+/* HERO SHARED */
+.page-hero{
+  padding:5rem 4rem 4rem;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border2);
+}
+.page-hero-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(97,188,214,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(97,188,214,.04) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:radial-gradient(ellipse 60% 80% at 20% 50%,black,transparent);
+}
+.page-hero-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(97,188,214,.1) 0%,transparent 70%);top:-50px;left:-80px;pointer-events:none;}
+.page-hero-content{position:relative;z-index:2;max-width:680px;}
+.ph-eye{display:inline-flex;align-items:center;gap:.6rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;}
+.ph-eye::before{content:'';width:18px;height:1px;background:var(--accent);}
+.ph-title{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem;}
+.ph-title span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ph-sub{font-size:.97rem;line-height:1.8;color:var(--muted);max-width:560px;}
+
+/* SECTION */
+.sec{padding:5rem 4rem;}
+.sec-alt{background:var(--surface);}
+.ew{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:.7rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);}
+.ew::before{content:'';width:18px;height:1px;background:var(--accent);}
+.st{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin-bottom:2.5rem;}
+.st span{color:var(--accent);}
+
+/* NUMBERS BAR */
+.numbar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);}
+.nb-item{padding:2rem 1.5rem;border-right:1px solid var(--border2);text-align:center;}
+.nb-item:last-child{border-right:none;}
+.nb-val{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.nb-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;}
+
+/* BUTTONS */
+.btn-fill{background:var(--accent);color:#07080a;padding:.8rem 1.8rem;font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s;border:none;cursor:pointer;}
+.btn-fill:hover{background:var(--accent2);transform:translateY(-2px);}
+.btn-out{border:1px solid var(--subtle);color:var(--white);padding:.8rem 1.8rem;font-size:.76rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .2s;}
+.btn-out:hover{border-color:var(--accent);color:var(--accent);}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap;}
+
+/* SERVICES GRID */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border2);}
+.svc{background:var(--bg);padding:2rem;position:relative;overflow:hidden;transition:background .2s;}
+.svc:hover{background:var(--card);}
+.svc-num{font-size:.62rem;letter-spacing:.2em;color:var(--accent);margin-bottom:1rem;}
+.svc-icon{width:38px;height:38px;background:rgba(97,188,214,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:1rem;}
+.svc-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.6rem;}
+.svc-desc{font-size:.82rem;line-height:1.72;color:var(--muted);}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.svc:hover::after{transform:scaleX(1);}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border2);}
+.tab{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.7rem 1.4rem;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;transition:all .2s;}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);}
+.panel{display:none;padding-top:2.2rem;}
+.panel.on{display:block;}
+
+/* CASE CARDS */
+.cc{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;background:var(--card);border:1px solid var(--border2);padding:2rem;margin-bottom:1.2rem;transition:border-color .2s;}
+.cc:hover{border-color:var(--border);}
+.cc-client{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;}
+.cc-title{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.8rem;line-height:1.25;}
+.cc-desc{font-size:.84rem;line-height:1.78;color:var(--muted);margin-bottom:1.2rem;}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;}
+.chip{background:rgba(97,188,214,.08);border:1px solid rgba(97,188,214,.18);padding:.28rem .65rem;font-size:.65rem;color:var(--accent);font-weight:500;}
+.cc-img{width:100%;border:1px solid var(--border2);object-fit:cover;display:block;}
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;}
+.ba-label{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem;}
+.ba-before{color:var(--muted);}.ba-after{color:var(--accent);}
+
+/* GBP */
+.gbp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.gbp-card{background:var(--card);border:1px solid var(--border2);overflow:hidden;transition:border-color .2s,transform .2s;}
+.gbp-card:hover{border-color:var(--border);transform:translateY(-3px);}
+.gbp-card img{width:100%;height:160px;object-fit:cover;object-position:top;display:block;}
+.gbp-body{padding:.9rem;}
+.gbp-name{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;margin-bottom:.2rem;}
+.gbp-meta{font-size:.68rem;color:var(--muted);}
+.gbp-stars{color:var(--gold);font-size:.7rem;margin-top:.25rem;}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.bc{background:var(--card);border:1px solid var(--border2);overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;color:inherit;display:block;}
+.bc:hover{border-color:var(--border);transform:translateY(-5px);}
+.bc img{width:100%;height:190px;object-fit:cover;display:block;}
+.bc-body{padding:1.4rem;}
+.bc-cat{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
+.bc-title{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;line-height:1.3;margin-bottom:.6rem;}
+.bc-excerpt{font-size:.78rem;line-height:1.65;color:var(--muted);margin-bottom:.9rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.bc-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border2);padding-top:.8rem;}
+.bc-src{font-size:.62rem;color:var(--muted);}
+.bc-link{font-size:.68rem;color:var(--accent);font-weight:500;}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.tc{background:var(--card);border:1px solid var(--border2);padding:1.8rem;position:relative;}
+.tc-q{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--accent);opacity:.2;line-height:.8;margin-bottom:.8rem;}
+.tc-text{font-size:.86rem;line-height:1.82;color:var(--muted);font-style:italic;margin-bottom:1.3rem;}
+.tc-div{width:1.8rem;height:1px;background:var(--accent);opacity:.4;margin-bottom:.9rem;}
+.tc-name{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;}
+.tc-role{font-size:.7rem;color:var(--muted);margin-top:.15rem;}
+
+/* ABOUT SMALL */
+.about-circle{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--border);display:block;flex-shrink:0;}
+.about-grid{display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:start;}
+.about-photo-col{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+.about-location{background:var(--card);border:1px solid var(--border2);padding:.9rem 1rem;text-align:center;width:100%;}
+.about-loc-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);}
+.about-loc-val{font-size:.85rem;color:var(--white);margin-top:.2rem;font-weight:500;}
+.flags{display:flex;flex-direction:column;gap:.5rem;width:100%;}
+.flag{background:var(--card);border:1px solid var(--border2);padding:.55rem .8rem;font-size:.76rem;display:flex;align-items:center;gap:.5rem;}
+.skills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem;}
+.skill{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .65rem;border:1px solid var(--border2);color:var(--muted);transition:all .2s;cursor:default;}
+.skill:hover{border-color:var(--accent);color:var(--accent);}
+.about-text p{font-size:.94rem;line-height:1.88;color:var(--muted);margin-bottom:1.2rem;}
+.about-text strong{color:var(--white);font-weight:500;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
+.cinfo{display:flex;flex-direction:column;gap:.9rem;margin-top:1.5rem;}
+.ci{display:flex;align-items:flex-start;gap:.8rem;padding:.9rem 1rem;background:var(--card);border:1px solid var(--border2);}
+.ci-icon{width:32px;height:32px;flex-shrink:0;background:rgba(97,188,214,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;}
+.ci-label{font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
+.ci-val{font-size:.85rem;color:var(--white);margin-top:.12rem;}
+.form{display:flex;flex-direction:column;gap:.9rem;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fg{display:flex;flex-direction:column;gap:.35rem;}
+.fg label{font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
+.fg input,.fg textarea,.fg select{background:var(--card);border:1px solid var(--border2);color:var(--white);padding:.7rem .9rem;font-family:'Inter',sans-serif;font-size:.86rem;outline:none;resize:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input:focus,.fg textarea:focus{border-color:var(--accent);}
+.fg select option{background:var(--card);}
+.fsub{background:var(--accent);color:#07080a;padding:.85rem 2rem;font-family:'Inter',sans-serif;font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:none;cursor:pointer;align-self:flex-start;transition:all .2s;}
+.fsub:hover{background:var(--accent2);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:var(--surface);padding:2rem 4rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.fl-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;}
+.fl-logo em{font-style:normal;color:var(--accent);}
+.fl-tag{font-size:.68rem;color:var(--muted);margin-top:.2rem;}
+.footer-nav{display:flex;gap:1.5rem;}
+.footer-nav a{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-decoration:none;transition:color .2s;}
+.footer-nav a:hover{color:var(--accent);}
+.fr-copy{font-size:.68rem;color:var(--muted);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease;}
+.rv.vis{opacity:1;transform:translateY(0);}
+.rv.d1{transition-delay:.08s;}.rv.d2{transition-delay:.16s;}.rv.d3{transition-delay:.24s;}
+
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem;}
+  .nav-links{display:none;}
+  .sec,.page-hero{padding:3rem 1.5rem;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem;}
+  .svc-grid,.tgrid,.blog-grid,.gbp-grid{grid-template-columns:1fr;}
+  .numbar{grid-template-columns:1fr 1fr;}
+  .cc{grid-template-columns:1fr;}
+  .frow{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;padding:1.5rem;}
+  .footer-nav{justify-content:center;}
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Orly<em>.</em></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html">Results</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="mailto:momonganorlyig@gmail.com" class="nav-btn">Hire me</a>
+</nav>
+<div class="page">
+<div class="page-hero">
+  <div class="page-hero-bg"></div><div class="page-hero-glow"></div>
+  <div class="page-hero-content">
+    <div class="ph-eye">What I do</div>
+    <h1 class="ph-title">Services built for<br><span>local growth</span></h1>
+    <p class="ph-sub">Every service is built around one goal: getting your business in front of the right people in your area and turning that visibility into real revenue.</p>
+  </div>
+</div>
+<section class="sec">
+  <div class="svc-grid rv">
+    <div class="svc"><div class="svc-num">01</div><div class="svc-icon">📍</div><h3 class="svc-title">Local SEO Strategy</h3><p class="svc-desc">End-to-end local SEO covering Google Business Profile optimisation, citation building, suburb-level keyword mapping, and competitor gap analysis tailored to your service area in Australia or the USA.</p></div>
+    <div class="svc"><div class="svc-num">02</div><div class="svc-icon">✍️</div><h3 class="svc-title">Content Strategy and Writing</h3><p class="svc-desc">Pillar pages, blog clusters, and service landing pages that build topical authority. Clear language, real research, no AI filler. Content that ranks and reads like a human wrote it.</p></div>
+    <div class="svc"><div class="svc-num">03</div><div class="svc-icon">📰</div><h3 class="svc-title">Digital PR</h3><p class="svc-desc">Offer-driven, press-release-style story angles that earn local media coverage, backlinks, and brand visibility without paying for ads.</p></div>
+    <div class="svc"><div class="svc-num">04</div><div class="svc-icon">🗺️</div><h3 class="svc-title">GBP Optimisation</h3><p class="svc-desc">Full Google Business Profile setup, optimisation, and ongoing management. I make your listing the one customers find, trust, and call first.</p></div>
+    <div class="svc"><div class="svc-num">05</div><div class="svc-icon">📊</div><h3 class="svc-title">Rank Grid Tracking</h3><p class="svc-desc">Hyperlocal rank maps showing exactly where you rank across every suburb in your service area. Before and after, side by side, so you can see the shift clearly.</p></div>
+    <div class="svc"><div class="svc-num">06</div><div class="svc-icon">📈</div><h3 class="svc-title">Monthly Retainers</h3><p class="svc-desc">Ongoing strategy, content production, and reporting so your rankings compound month after month rather than stalling after a one-off project.</p></div>
+  </div>
+</section>
+<section class="sec sec-alt" style="text-align:center;">
+  <h2 style="font-family:Syne,sans-serif;font-size:2.2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:1rem;">Ready to get <span style="color:var(--accent);">started?</span></h2>
+  <p style="color:var(--muted);font-size:.95rem;max-width:440px;margin:0 auto 2rem;line-height:1.8;">Drop me a message and I&apos;ll get back to you within one business day.</p>
+  <a href="mailto:momonganorlyig@gmail.com" class="btn-fill">Contact me</a>
+</section>
+<script>
+const rvEls = document.querySelectorAll('.rv');
+const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.07});
+rvEls.forEach(el=>obs.observe(el));
+function showTab(ev,id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.getElementById('panel-'+id).classList.add('on');
+  ev.target.classList.add('on');
+}
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.fsub');
+  btn.textContent='Sent ✓';btn.style.background='#1e7a4a';btn.style.color='#fff';
+  setTimeout(()=>{btn.textContent='Send message';btn.style.background='';btn.style.color='';e.target.reset();},3000);
+}
+</script>
+</div>
+<footer>
+  <div>
+    <div class="fl-logo">Orly<em>.</em></div>
+    <div class="fl-tag">Local SEO Specialist and Content Writer &mdash; USA and Australia</div>
+  </div>
+  <nav class="footer-nav">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="work.html">Results</a>
+    <a href="writing.html">Writing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="fr-copy">&copy; 2025 Orly Momongan. All rights reserved.</div>
+</footer>
+<script>
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  if(a.href.includes('services'))a.classList.add('active');
+});
+</script>
+</body></html>
