@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orly Momongan | Local SEO Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --cream: #faf7f2;
+  --accent: #e8500a;
+  --accent2: #1a3c5e;
+  --mid: #6b6b6b;
+  --line: #e0dbd4;
+  --white: #ffffff;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+h1,h2,h3,h4,h5,h6,.nav-logo,.page-label{font-family:'Syne',sans-serif;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--cream);border-bottom:1px solid var(--line);padding:0 5vw;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-size:1.15rem;font-weight:800;letter-spacing:-0.5px;cursor:pointer;color:var(--ink);}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.875rem;font-weight:500;color:var(--mid);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);}
+.nav-cta{background:var(--accent);color:#fff;padding:0.5rem 1.25rem;border-radius:2px;font-size:0.875rem;font-weight:600;text-decoration:none;transition:background 0.2s;font-family:'Syne',sans-serif;}
+.nav-cta:hover{background:#c44008;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--ink);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--line);z-index:998;padding:1.5rem 5vw;flex-direction:column;gap:1rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--ink);text-decoration:none;font-size:1rem;font-weight:500;padding:0.5rem 0;border-bottom:1px solid var(--line);}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:64px;}
+.page.active{display:block;}
+
+/* HERO */
+.hero{min-height:calc(100vh - 64px);display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;}
+.hero-left{background:var(--accent2);color:#fff;padding:8vw 7vw;display:flex;flex-direction:column;justify-content:center;}
+.hero-label{font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:1.5rem;}
+.hero-title{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:1.5rem;}
+.hero-title em{color:var(--accent);font-style:normal;}
+.hero-sub{font-size:1.05rem;line-height:1.7;color:rgba(255,255,255,0.75);max-width:420px;margin-bottom:2.5rem;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{background:var(--accent);color:#fff;padding:0.85rem 2rem;border-radius:2px;font-size:0.9rem;font-weight:700;text-decoration:none;font-family:'Syne',sans-serif;letter-spacing:0.03em;transition:background 0.2s,transform 0.15s;display:inline-block;}
+.btn-primary:hover{background:#c44008;transform:translateY(-1px);}
+.btn-outline{border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:0.85rem 2rem;border-radius:2px;font-size:0.9rem;font-weight:600;text-decoration:none;font-family:'Syne',sans-serif;transition:all 0.2s;display:inline-block;}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08);}
+.hero-right{background:var(--cream);padding:6vw 5vw;display:flex;flex-direction:column;justify-content:center;gap:2rem;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.stat-card{background:#fff;border:1px solid var(--line);padding:1.5rem;border-radius:4px;}
+.stat-num{font-size:2.2rem;font-weight:800;color:var(--accent);font-family:'Syne',sans-serif;line-height:1;}
+.stat-label{font-size:0.8rem;color:var(--mid);margin-top:0.4rem;font-weight:500;}
+.trust-badges{display:flex;flex-wrap:wrap;gap:0.6rem;}
+.badge{background:var(--ink);color:#fff;padding:0.4rem 0.9rem;border-radius:2px;font-size:0.75rem;font-weight:600;letter-spacing:0.05em;font-family:'Syne',sans-serif;}
+.badge.light{background:transparent;border:1px solid var(--line);color:var(--ink);}
+.section-quote{background:var(--accent);color:#fff;padding:1.25rem 1.5rem;border-radius:4px;}
+.section-quote p{font-size:0.95rem;font-style:italic;line-height:1.6;}
+.section-quote cite{font-size:0.8rem;font-style:normal;margin-top:0.5rem;display:block;opacity:0.85;}
+
+/* SECTION COMMONS */
+section{padding:5rem 5vw;}
+.section-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-0.5px;line-height:1.1;margin-bottom:1rem;}
+.section-sub{font-size:1rem;color:var(--mid);line-height:1.7;max-width:600px;}
+.divider{border:none;border-top:1px solid var(--line);margin:0;}
+
+/* FEATURED WORK PREVIEW */
+.work-preview{background:var(--ink);}
+.work-preview .section-title{color:#fff;}
+.work-preview .section-tag{color:var(--accent);}
+.work-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3rem;}
+.work-card{background:#111;overflow:hidden;position:relative;aspect-ratio:4/3;}
+.work-card img{width:100%;height:100%;object-fit:cover;opacity:0.7;transition:opacity 0.3s,transform 0.4s;}
+.work-card:hover img{opacity:1;transform:scale(1.03);}
+.work-card-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));}
+.work-card-info h4{color:#fff;font-size:0.95rem;font-weight:700;font-family:'Syne',sans-serif;}
+.work-card-info p{color:rgba(255,255,255,0.6);font-size:0.75rem;margin-top:0.25rem;}
+
+/* TESTIMONIAL PREVIEW */
+.testi-preview{background:#fff;}
+.testi-cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;}
+.testi-card{background:var(--cream);padding:2rem;border-radius:4px;border-left:4px solid var(--accent);}
+.testi-card blockquote{font-size:1rem;line-height:1.7;color:var(--ink);font-style:italic;}
+.testi-card cite{display:block;margin-top:1rem;font-size:0.8rem;font-weight:700;color:var(--mid);font-style:normal;font-family:'Syne',sans-serif;letter-spacing:0.05em;text-transform:uppercase;}
+
+/* BLOG PREVIEW */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.blog-card{background:#fff;border-radius:4px;overflow:hidden;border:1px solid var(--line);transition:box-shadow 0.2s,transform 0.2s;}
+.blog-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.1);transform:translateY(-3px);}
+.blog-card-img{height:200px;overflow:hidden;}
+.blog-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.blog-card:hover .blog-card-img img{transform:scale(1.05);}
+.blog-card-body{padding:1.25rem;}
+.blog-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem;}
+.blog-card-body h3{font-size:1rem;font-weight:700;line-height:1.4;margin-bottom:0.5rem;}
+.blog-card-body p{font-size:0.85rem;color:var(--mid);line-height:1.6;}
+.blog-card-body a{color:var(--accent);text-decoration:none;font-size:0.8rem;font-weight:600;display:inline-block;margin-top:0.75rem;}
+
+/* CTA BAND */
+.cta-band{background:var(--accent);color:#fff;padding:5rem 5vw;display:flex;justify-content:space-between;align-items:center;gap:2rem;}
+.cta-band h2{font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:800;max-width:550px;line-height:1.1;}
+.btn-white{background:#fff;color:var(--accent);padding:0.85rem 2rem;border-radius:2px;font-size:0.9rem;font-weight:700;text-decoration:none;font-family:'Syne',sans-serif;display:inline-block;transition:transform 0.15s;}
+.btn-white:hover{transform:translateY(-1px);}
+
+/* ABOUT PAGE */
+.about-hero{display:grid;grid-template-columns:1fr 1fr;gap:5vw;padding:5rem 5vw;align-items:start;}
+.about-img-wrap{position:relative;}
+.about-img-wrap img{width:100%;max-width:380px;border-radius:4px;display:block;}
+.about-img-label{position:absolute;bottom:-1rem;right:-1rem;background:var(--accent);color:#fff;padding:0.75rem 1.25rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;}
+.about-content .section-title{margin-top:1rem;}
+.skills-list{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;}
+.skill-pill{background:var(--ink);color:#fff;padding:0.4rem 1rem;border-radius:2px;font-size:0.8rem;font-weight:600;font-family:'Syne',sans-serif;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;background:var(--ink);padding:2rem;border-radius:4px;}
+.about-stat .num{font-size:2rem;font-weight:800;color:var(--accent);font-family:'Syne',sans-serif;}
+.about-stat .lbl{font-size:0.75rem;color:rgba(255,255,255,0.6);margin-top:0.3rem;}
+
+/* SERVICES PAGE */
+.services-hero{background:var(--accent2);color:#fff;padding:5rem 5vw;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;padding:5rem 5vw;}
+.service-card{background:#fff;border:1px solid var(--line);padding:2rem;border-radius:4px;transition:box-shadow 0.2s,transform 0.2s;}
+.service-card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.08);transform:translateY(-3px);}
+.service-icon{font-size:2rem;margin-bottom:1rem;}
+.service-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.75rem;}
+.service-card p{font-size:0.875rem;color:var(--mid);line-height:1.7;}
+.service-num{font-size:0.7rem;font-weight:700;color:var(--accent);letter-spacing:0.1em;font-family:'Syne',sans-serif;margin-bottom:0.5rem;}
+
+/* CASE STUDIES PAGE */
+.case-hero{background:var(--ink);color:#fff;padding:5rem 5vw;}
+.case-study{padding:5rem 5vw;border-bottom:1px solid var(--line);}
+.case-study:nth-child(even){background:#fff;}
+.case-label{display:inline-block;background:var(--accent);color:#fff;padding:0.3rem 0.8rem;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;font-family:'Syne',sans-serif;margin-bottom:1rem;border-radius:2px;}
+.case-study h2{font-size:clamp(1.5rem,3vw,2.5rem);font-weight:800;margin-bottom:1rem;}
+.case-study p{color:var(--mid);line-height:1.75;max-width:700px;margin-bottom:2rem;}
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.ba-panel{border-radius:4px;overflow:hidden;}
+.ba-label{padding:0.75rem 1rem;font-size:0.75rem;font-weight:700;font-family:'Syne',sans-serif;letter-spacing:0.08em;text-transform:uppercase;}
+.ba-label.before{background:#fee2e2;color:#991b1b;}
+.ba-label.after{background:#dcfce7;color:#166534;}
+.ba-panel img{width:100%;display:block;}
+.results-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.result-item{background:var(--cream);padding:1.25rem;border-radius:4px;text-align:center;}
+.result-item .val{font-size:1.75rem;font-weight:800;color:var(--accent);font-family:'Syne',sans-serif;}
+.result-item .desc{font-size:0.75rem;color:var(--mid);margin-top:0.3rem;}
+.gbp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;}
+.gbp-card{border-radius:4px;overflow:hidden;border:1px solid var(--line);}
+.gbp-card img{width:100%;display:block;}
+.gbp-card-info{padding:0.75rem 1rem;background:#fff;}
+.gbp-card-info strong{font-size:0.85rem;font-family:'Syne',sans-serif;}
+.gbp-card-info span{font-size:0.75rem;color:var(--mid);display:block;margin-top:0.2rem;}
+.gsc-showcase{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.5rem;}
+.gsc-showcase img{width:100%;border-radius:4px;border:1px solid var(--line);}
+
+/* TESTIMONIALS PAGE */
+.testi-hero{background:var(--accent2);color:#fff;padding:5rem 5vw;}
+.testi-full{padding:5rem 5vw;background:#fff;}
+.testi-big{max-width:800px;margin:0 auto 4rem;background:var(--cream);padding:3rem;border-radius:4px;border-left:6px solid var(--accent);}
+.testi-big blockquote{font-size:1.2rem;line-height:1.8;color:var(--ink);font-style:italic;}
+.testi-big cite{display:block;margin-top:1.5rem;font-style:normal;font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);}
+.testi-big .stars{color:#f59e0b;font-size:1.1rem;margin-bottom:1rem;}
+.testi-logo{display:flex;gap:0.5rem;align-items:center;margin-top:1rem;}
+.testi-logo img{height:28px;object-fit:contain;}
+
+/* BLOG PAGE */
+.blog-hero{background:var(--ink);color:#fff;padding:5rem 5vw;}
+.blog-full{padding:5rem 5vw;}
+.blog-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+
+/* CONTACT PAGE */
+.contact-split{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);}
+.contact-left{background:var(--accent2);color:#fff;padding:6vw 5vw;display:flex;flex-direction:column;justify-content:center;}
+.contact-left h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem;}
+.contact-left p{font-size:1rem;line-height:1.75;opacity:0.8;max-width:420px;margin-bottom:2.5rem;}
+.contact-info{display:flex;flex-direction:column;gap:1rem;}
+.contact-info a{color:#fff;text-decoration:none;display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;}
+.contact-info a:hover{opacity:0.8;}
+.contact-right{background:var(--cream);padding:6vw 5vw;display:flex;flex-direction:column;justify-content:center;}
+.contact-right h3{font-size:1.5rem;font-weight:700;margin-bottom:2rem;}
+.form-group{margin-bottom:1.25rem;}
+.form-group label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:0.4rem;font-family:'Syne',sans-serif;letter-spacing:0.05em;text-transform:uppercase;}
+.form-group input,.form-group textarea,.form-group select{width:100%;border:1.5px solid var(--line);border-radius:2px;padding:0.75rem 1rem;font-size:0.9rem;font-family:'DM Sans',sans-serif;background:#fff;color:var(--ink);transition:border-color 0.2s;}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
+.form-group textarea{resize:vertical;min-height:140px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.submit-btn{background:var(--accent);color:#fff;border:none;padding:1rem 2.5rem;font-size:0.95rem;font-weight:700;font-family:'Syne',sans-serif;border-radius:2px;cursor:pointer;transition:background 0.2s,transform 0.15s;width:100%;}
+.submit-btn:hover{background:#c44008;transform:translateY(-1px);}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:3rem 5vw;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:0.8rem;color:rgba(255,255,255,0.5);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.8rem;transition:color 0.2s;}
+.footer-links a:hover{color:#fff;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{min-height:60vh;}
+  .hero-right{padding:3rem 5vw;}
+  .testi-cards{grid-template-columns:1fr;}
+  .work-cards{grid-template-columns:1fr 1fr;}
+  .blog-grid,.blog-full-grid{grid-template-columns:1fr 1fr;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .before-after{grid-template-columns:1fr;}
+  .results-row{grid-template-columns:1fr 1fr;}
+  .gbp-grid{grid-template-columns:1fr 1fr;}
+  .gsc-showcase{grid-template-columns:1fr;}
+  .about-hero{grid-template-columns:1fr;}
+  .contact-split{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .cta-band{flex-direction:column;text-align:center;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:600px){
+  .hero-title{font-size:2rem;}
+  .work-cards{grid-template-columns:1fr;}
+  .blog-grid,.blog-full-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .gbp-grid{grid-template-columns:1fr;}
+  .about-stats{grid-template-columns:1fr;}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.fade-in{opacity:0;animation:fadeUp 0.6s ease forwards;}
+.fade-in:nth-child(1){animation-delay:0.1s;}
+.fade-in:nth-child(2){animation-delay:0.2s;}
+.fade-in:nth-child(3){animation-delay:0.3s;}
+.fade-in:nth-child(4){animation-delay:0.4s;}
+.fade-in:nth-child(5){animation-delay:0.5s;}
+.fade-in:nth-child(6){animation-delay:0.6s;}
+
+.page-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:0.5rem;}
+.text-accent{color:var(--accent);}
+.mb1{margin-bottom:1rem;}
+.mb2{margin-bottom:2rem;}
+.mt2{margin-top:2rem;}
+.mt3{margin-top:3rem;}
+.full-img{width:100%;border-radius:4px;display:block;}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+.map-grid img{width:100%;border-radius:4px;border:1px solid var(--line);}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="showPage('home')">Orly<span>.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home');return false;" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="showPage('about');return false;" id="nav-about">About</a></li>
+    <li><a href="#" onclick="showPage('services');return false;" id="nav-services">Services</a></li>
+    <li><a href="#" onclick="showPage('work');return false;" id="nav-work">Case Studies</a></li>
+    <li><a href="#" onclick="showPage('testimonials');return false;" id="nav-testimonials">Testimonials</a></li>
+    <li><a href="#" onclick="showPage('blog');return false;" id="nav-blog">Articles</a></li>
+    <li><a href="#" onclick="showPage('contact');return false;" id="nav-contact">Contact</a></li>
+  </ul>
+  <a href="mailto:momonganorlyig@gmail.com" class="nav-cta">Work With Me</a>
+  <button class="nav-hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home');toggleMenu();return false;">Home</a>
+  <a href="#" onclick="showPage('about');toggleMenu();return false;">About</a>
+  <a href="#" onclick="showPage('services');toggleMenu();return false;">Services</a>
+  <a href="#" onclick="showPage('work');toggleMenu();return false;">Case Studies</a>
+  <a href="#" onclick="showPage('testimonials');toggleMenu();return false;">Testimonials</a>
+  <a href="#" onclick="showPage('blog');toggleMenu();return false;">Articles</a>
+  <a href="#" onclick="showPage('contact');toggleMenu();return false;">Contact</a>
+  <a href="mailto:momonganorlyig@gmail.com">Work With Me</a>
+</div>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-label">Local SEO Specialist / Content Writer</p>
+      <h1 class="hero-title">Get Found.<br><em>Get Leads.</em><br>Dominate Local.</h1>
+      <p class="hero-sub">I help local businesses rank higher on Google, dominate the map pack, and attract more customers through strategic SEO and high-quality content.</p>
+      <div class="hero-btns">
+        <a href="mailto:momonganorlyig@gmail.com" class="btn-primary">Work With Me</a>
+        <a href="#" onclick="showPage('work');return false;" class="btn-outline">See My Results</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stats-grid">
+        <div class="stat-card fade-in">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years of SEO Experience</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Local Clients Served</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-num">15.9k</div>
+          <div class="stat-label">Clicks Generated (16 months)</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-num">#1-3</div>
+          <div class="stat-label">Map Pack Rankings Achieved</div>
+        </div>
+      </div>
+      <div class="trust-badges">
+        <span class="badge">Local SEO</span>
+        <span class="badge">GBP Optimization</span>
+        <span class="badge">Map Pack</span>
+        <span class="badge">SEO Content</span>
+        <span class="badge light">On-Page SEO</span>
+        <span class="badge light">Local Strategy</span>
+      </div>
+      <div class="section-quote">
+        <p>"Orly delivered exactly what we needed. Real, measurable growth. Highly recommend."</p>
+        <cite>Brad Saveth, Co-Founder &amp; COO, SupplyCaddy</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work Preview -->
+  <section class="work-preview">
+    <span class="section-tag">Selected Work</span>
+    <h2 class="section-title" style="color:#fff;">Real Results for Real Businesses</h2>
+    <div class="work-cards" id="homeWorkCards"></div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="#" onclick="showPage('work');return false;" class="btn-primary">View All Case Studies</a>
+    </div>
+  </section>
+
+  <!-- Testimonials Preview -->
+  <section class="testi-preview">
+    <span class="section-tag">Client Testimonials</span>
+    <h2 class="section-title">Trusted by Growing Businesses</h2>
+    <div class="testi-cards">
+      <div class="testi-card fade-in">
+        <blockquote>"Orly consistently delivered well-researched, SEO-optimized content that helped our blog get real traction. Professional, reliable, and detail-oriented. Would absolutely work with her again."</blockquote>
+        <cite>Brad Saveth &mdash; Co-Founder &amp; COO, SupplyCaddy</cite>
+      </div>
+      <div class="testi-card fade-in">
+        <blockquote>"We hired Orly to help with our content and local SEO strategy. She understood our niche quickly and produced content that genuinely ranked. The quality was a step above what we had tried before."</blockquote>
+        <cite>SupplyCaddy Team</cite>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="#" onclick="showPage('testimonials');return false;" class="btn-primary" style="background:var(--accent2);">Read All Testimonials</a>
+    </div>
+  </section>
+
+  <!-- Blog Preview -->
+  <section>
+    <span class="section-tag">Latest Articles</span>
+    <h2 class="section-title">Published Writing</h2>
+    <p class="section-sub">SEO-focused articles written for real clients across diverse industries.</p>
+    <div class="blog-grid" id="homeBlogCards"></div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="#" onclick="showPage('blog');return false;" class="btn-primary">View All Articles</a>
+    </div>
+  </section>
+
+  <!-- CTA Band -->
+  <div class="cta-band">
+    <h2>Ready to rank higher and get more local customers?</h2>
+    <a href="mailto:momonganorlyig@gmail.com" class="btn-white">Work With Me</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('about');return false;">About</a>
+      <a href="#" onclick="showPage('services');return false;">Services</a>
+      <a href="#" onclick="showPage('work');return false;">Work</a>
+      <a href="mailto:momonganorlyig@gmail.com">Email</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== ABOUT PAGE ===================== -->
+<div id="page-about" class="page">
+  <section style="background:var(--accent2);color:#fff;padding:5rem 5vw 3rem;">
+    <span class="page-label" style="color:rgba(255,255,255,0.5);">About Me</span>
+    <h1 class="section-title" style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);">The SEO Specialist<br>Behind the Results</h1>
+  </section>
+
+  <div class="about-hero">
+    <div class="about-img-wrap">
+      <div style="width:100%;max-width:380px;aspect-ratio:3/4;background:linear-gradient(135deg,var(--accent2),var(--accent));border-radius:4px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
+        <div style="font-size:4rem;">🎯</div>
+        <p style="color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;text-align:center;padding:0 2rem;">Orly Momongan<br><span style="font-weight:400;font-size:0.85rem;opacity:0.8;">Local SEO Specialist</span></p>
+      </div>
+      <div class="about-img-label">3+ Years in Local SEO</div>
+    </div>
+    <div class="about-content">
+      <span class="page-label">My Story</span>
+      <h2 class="section-title">Hi, I'm Orly.</h2>
+      <p style="color:var(--mid);line-height:1.8;margin-bottom:1.25rem;">I'm a Local SEO specialist and content writer with over 3 years of hands-on experience helping small and local businesses get found on Google. My work sits at the intersection of technical strategy and compelling writing.</p>
+      <p style="color:var(--mid);line-height:1.8;margin-bottom:1.25rem;">I specialise in Google Business Profile optimization, map pack rankings, and creating SEO content that actually converts. I've worked with plumbers, electricians, food service brands, law firms, and immigration specialists across Australia and the US.</p>
+      <p style="color:var(--mid);line-height:1.8;margin-bottom:2rem;">I don't just write content or tweak listings. I build local authority that lasts. Every client I work with gets a strategy tailored to their market, their competitors, and their goals.</p>
+      <div class="skills-list">
+        <span class="skill-pill">Google Business Profile</span>
+        <span class="skill-pill">Map Pack Optimization</span>
+        <span class="skill-pill">Local SEO Strategy</span>
+        <span class="skill-pill">SEO Content Writing</span>
+        <span class="skill-pill">On-Page SEO</span>
+        <span class="skill-pill">Google Search Console</span>
+        <span class="skill-pill">Local Citations</span>
+        <span class="skill-pill">Keyword Research</span>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="num">3+</div>
+          <div class="lbl">Years Experience</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">15.9k</div>
+          <div class="lbl">Clicks Generated</div>
+        </div>
+        <div class="about-stat">
+          <div class="num">Top 3</div>
+          <div class="lbl">Map Pack Rankings</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section style="background:#fff;padding:5rem 5vw;">
+    <span class="section-tag">My Process</span>
+    <h2 class="section-title">How I Work</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;" class="process-grid">
+      <div style="padding:1.5rem;background:var(--cream);border-radius:4px;border-top:3px solid var(--accent);">
+        <div style="font-size:1.5rem;margin-bottom:1rem;">01</div>
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Audit</h3>
+        <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;">Deep dive into your current local presence, GBP listing, citations, and competitors.</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--cream);border-radius:4px;border-top:3px solid var(--accent);">
+        <div style="font-size:1.5rem;margin-bottom:1rem;">02</div>
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Strategy</h3>
+        <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;">Custom roadmap targeting your highest-value local keywords and service areas.</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--cream);border-radius:4px;border-top:3px solid var(--accent);">
+        <div style="font-size:1.5rem;margin-bottom:1rem;">03</div>
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Execute</h3>
+        <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;">GBP optimization, on-page fixes, content creation, and citation building.</p>
+      </div>
+      <div style="padding:1.5rem;background:var(--cream);border-radius:4px;border-top:3px solid var(--accent);">
+        <div style="font-size:1.5rem;margin-bottom:1rem;">04</div>
+        <h3 style="font-size:1rem;margin-bottom:0.5rem;">Report</h3>
+        <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;">Transparent reporting with real data from GSC, GMB Insights, and rank tracking.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <h2>Let's get your business to the top of local search.</h2>
+    <a href="mailto:momonganorlyig@gmail.com" class="btn-white">Work With Me</a>
+  </div>
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('services');return false;">Services</a>
+      <a href="mailto:momonganorlyig@gmail.com">Email</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== SERVICES PAGE ===================== -->
+<div id="page-services" class="page">
+  <div class="services-hero">
+    <span class="page-label" style="color:rgba(255,255,255,0.5);">What I Offer</span>
+    <h1 class="section-title" style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1rem;">SEO Services That<br>Drive Real Growth</h1>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:560px;line-height:1.7;">Focused, strategic, and built for local businesses that want to show up when it counts.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-num">01</div>
+      <div class="service-icon">📍</div>
+      <h3>Local SEO</h3>
+      <p>End-to-end local search optimization including keyword targeting, NAP consistency, citation building, and local landing page strategy. Built to get you found in your service area.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">02</div>
+      <div class="service-icon">🗺️</div>
+      <h3>Google Business Profile Optimization</h3>
+      <p>Complete GBP setup and optimization including category selection, service descriptions, photo strategy, Q&amp;A, posts, and review management to boost your map pack visibility.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">03</div>
+      <div class="service-icon">✍️</div>
+      <h3>SEO Content Writing</h3>
+      <p>Professionally written, search-optimized content for service pages, blogs, and location pages. Content that ranks and converts, not just fills space.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">04</div>
+      <div class="service-icon">📦</div>
+      <h3>Map Pack Optimization</h3>
+      <p>Targeted strategy to push your listing into the coveted top 3 map pack results. Includes proximity signals, review velocity, GBP signals, and local authority building.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">05</div>
+      <div class="service-icon">🔍</div>
+      <h3>On-Page SEO</h3>
+      <p>Technical and content-level on-page optimization including title tags, meta descriptions, header structure, internal linking, and page speed recommendations.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">06</div>
+      <div class="service-icon">📊</div>
+      <h3>Local Content Strategy</h3>
+      <p>Topic cluster and pillar page planning tailored to your local niche. Build topical authority that makes Google see you as the definitive answer in your area.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">07</div>
+      <div class="service-icon">🔧</div>
+      <h3>SEO Audit</h3>
+      <p>Comprehensive audit covering technical SEO, local signals, GBP health, competitor gaps, and quick-win opportunities. Delivered as an actionable report you can use immediately.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-num">08</div>
+      <div class="service-icon">📈</div>
+      <h3>Reporting &amp; Consulting</h3>
+      <p>Monthly reporting using Google Search Console, GBP Insights, and rank tracking tools. Includes strategy calls to review progress and adjust priorities.</p>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Not sure which service you need? Let's talk.</h2>
+    <a href="mailto:momonganorlyig@gmail.com" class="btn-white">Work With Me</a>
+  </div>
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== CASE STUDIES PAGE ===================== -->
+<div id="page-work" class="page">
+  <div class="case-hero">
+    <span class="page-label" style="color:rgba(255,255,255,0.5);">Case Studies</span>
+    <h1 class="section-title" style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1rem;">Results That Speak<br>for Themselves</h1>
+    <p style="color:rgba(255,255,255,0.7);max-width:560px;line-height:1.7;">Real before-and-after data from real clients. No stock screenshots, no made-up numbers.</p>
+  </div>
+
+  <!-- Case Study 1: GSC Performance -->
+  <div class="case-study">
+    <span class="case-label">SEO Content Strategy</span>
+    <h2>15.9K Clicks &amp; 3.78M Impressions in 16 Months</h2>
+    <p>Comprehensive SEO content and on-page optimization strategy for a client, resulting in sustained organic search growth over a 16-month period tracked in Google Search Console.</p>
+    <div class="results-row">
+      <div class="result-item"><div class="val">15.9k</div><div class="desc">Total Clicks</div></div>
+      <div class="result-item"><div class="val">3.78M</div><div class="desc">Total Impressions</div></div>
+      <div class="result-item"><div class="val">16mo</div><div class="desc">Tracking Period</div></div>
+      <div class="result-item"><div class="val">30.6</div><div class="desc">Avg Position</div></div>
+    </div>
+    <div class="gsc-showcase" id="gscShowcase"></div>
+  </div>
+
+  <!-- Case Study 2: Map Pack -->
+  <div class="case-study">
+    <span class="case-label">Local SEO / Map Pack</span>
+    <h2>From Invisible to #1-3 in the Local Map Pack</h2>
+    <p>A full local SEO campaign for a plumbing business in Sydney, Australia. Starting position was 20+ across the entire target area. After GBP optimization, citation building, and content strategy, the business broke into top 3 positions across key service zones.</p>
+    <div class="before-after">
+      <div class="ba-panel">
+        <div class="ba-label before">BEFORE: Ranked 20+ Across All Areas</div>
+        <div id="mapBefore"></div>
+      </div>
+      <div class="ba-panel">
+        <div class="ba-label after">AFTER: Top 1-3 Positions Across Service Area</div>
+        <div id="mapAfter"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study 3: GBP Optimization -->
+  <div class="case-study">
+    <span class="case-label">Google Business Profile Optimization</span>
+    <h2>Fully Optimized GBP Listings Across Multiple Clients</h2>
+    <p>Managed and optimized Google Business Profiles for plumbing and electrical businesses in Australia and the US. Key improvements included category optimization, photo uploads, service descriptions, and review response strategies that drove measurable engagement increases.</p>
+    <div class="gbp-grid" id="gbpGrid"></div>
+  </div>
+
+  <!-- Case Study 4: Additional GSC Clients -->
+  <div class="case-study">
+    <span class="case-label">Multi-Client GSC Results</span>
+    <h2>Consistent Search Growth Across Multiple Niches</h2>
+    <p>These Google Search Console snapshots represent organic performance across different client accounts managed over the same 16-month window. Each one reflects a different niche: home services, legal, immigration, and e-commerce.</p>
+    <div class="gsc-showcase" id="gscMore"></div>
+  </div>
+
+  <!-- Case Study 5: Map Grid Visuals -->
+  <div class="case-study">
+    <span class="case-label">Local Rank Tracking</span>
+    <h2>Grid-Based Rank Tracking: Before vs After</h2>
+    <p>These geo-grid maps show search ranking positions across Sydney suburbs for target keywords. Red/dark = position 20+. Green = top 3. The transformation shows the impact of a targeted local SEO campaign over time.</p>
+    <div class="map-grid" id="mapGridMore"></div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Want results like these for your business?</h2>
+    <a href="mailto:momonganorlyig@gmail.com" class="btn-white">Work With Me</a>
+  </div>
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== TESTIMONIALS PAGE ===================== -->
+<div id="page-testimonials" class="page">
+  <div class="testi-hero">
+    <span class="page-label" style="color:rgba(255,255,255,0.5);">Testimonials</span>
+    <h1 class="section-title" style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1rem;">What Clients Say</h1>
+    <p style="color:rgba(255,255,255,0.7);max-width:500px;line-height:1.7;">Real feedback from the businesses I've worked with.</p>
+  </div>
+
+  <div class="testi-full">
+    <div class="testi-big">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"Orly consistently delivered well-researched, SEO-optimized content that helped our blog get real traction in search. She was professional, reliable, and detail-oriented throughout the entire engagement. Every piece she wrote was on-brief and thoughtfully structured for both readers and search engines. We saw meaningful improvements in organic traffic and would absolutely work with her again."</blockquote>
+      <cite>Brad Saveth &mdash; Co-Founder, President &amp; COO, SupplyCaddy</cite>
+    </div>
+
+    <div class="testi-big">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"We brought Orly on to help with SEO content for our Delivered blog and she exceeded expectations. Her understanding of how to structure content for local and topical SEO is genuinely impressive. The articles she wrote for us ranked faster than anything we'd produced internally. She's the kind of writer who thinks like an SEO, and that's rare. SupplyCaddy highly recommends her services."</blockquote>
+      <cite>SupplyCaddy &mdash; Food Service Packaging, USA</cite>
+    </div>
+
+    <div style="background:var(--cream);padding:2.5rem;border-radius:4px;border-left:6px solid var(--accent2);max-width:800px;margin:0 auto;">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote style="font-style:italic;font-size:1.05rem;line-height:1.8;">"The content strategy Orly built for us helped us establish real topical authority in our niche. Our blog went from zero traction to consistent monthly visitors. She has a rare combination of SEO knowledge and genuine writing ability. Worth every cent."</blockquote>
+      <cite style="display:block;margin-top:1rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--mid);">Home Services Client &mdash; Australia</cite>
+    </div>
+  </div>
+
+  <section style="background:var(--ink);padding:4rem 5vw;text-align:center;">
+    <h2 style="color:#fff;font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem;">Ready to be the next success story?</h2>
+    <a href="mailto:momonganorlyig@gmail.com" class="btn-primary">Work With Me</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== BLOG PAGE ===================== -->
+<div id="page-blog" class="page">
+  <div class="blog-hero">
+    <span class="page-label" style="color:rgba(255,255,255,0.5);">Published Work</span>
+    <h1 class="section-title" style="color:#fff;font-size:clamp(2.5rem,5vw,4rem);margin-bottom:1rem;">Articles &amp; Writing</h1>
+    <p style="color:rgba(255,255,255,0.7);max-width:560px;line-height:1.7;">SEO-optimized articles written for clients across home services, food, legal, and immigration niches.</p>
+  </div>
+
+  <div class="blog-full">
+    <div class="blog-full-grid" id="blogFullGrid"></div>
+  </div>
+
+  <div class="cta-band">
+    <h2>Need SEO content that actually ranks?</h2>
+    <a href="mailto:momonganorlyig@gmail.com" class="btn-white">Work With Me</a>
+  </div>
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('contact');return false;">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== CONTACT PAGE ===================== -->
+<div id="page-contact" class="page">
+  <div class="contact-split">
+    <div class="contact-left">
+      <span class="page-label" style="color:rgba(255,255,255,0.5);">Let's Talk</span>
+      <h2>Ready to grow your local presence?</h2>
+      <p>Whether you need a full SEO strategy, GBP optimization, or ongoing content writing, I'm here to help. Let's figure out what your business needs and build a plan that works.</p>
+      <div class="contact-info">
+        <a href="mailto:momonganorlyig@gmail.com">
+          <span style="font-size:1.2rem;">✉️</span>
+          momonganorlyig@gmail.com
+        </a>
+        <span style="font-size:0.85rem;opacity:0.6;margin-top:0.5rem;">Typical response within 24 hours</span>
+      </div>
+      <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.15);">
+        <p style="font-size:0.8rem;opacity:0.5;margin-bottom:1rem;font-family:'Syne',sans-serif;letter-spacing:0.1em;text-transform:uppercase;">Services I offer</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="background:rgba(255,255,255,0.1);color:#fff;padding:0.3rem 0.8rem;border-radius:2px;font-size:0.75rem;">Local SEO</span>
+          <span style="background:rgba(255,255,255,0.1);color:#fff;padding:0.3rem 0.8rem;border-radius:2px;font-size:0.75rem;">GBP Optimization</span>
+          <span style="background:rgba(255,255,255,0.1);color:#fff;padding:0.3rem 0.8rem;border-radius:2px;font-size:0.75rem;">SEO Content</span>
+          <span style="background:rgba(255,255,255,0.1);color:#fff;padding:0.3rem 0.8rem;border-radius:2px;font-size:0.75rem;">Map Pack SEO</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3>Send a Message</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@business.com">
+      </div>
+      <div class="form-group">
+        <label>Business Type</label>
+        <select>
+          <option value="">Select your industry</option>
+          <option>Home Services (Plumbing, Electrical, HVAC)</option>
+          <option>Legal / Law Firm</option>
+          <option>Food &amp; Beverage</option>
+          <option>Healthcare</option>
+          <option>Retail / E-commerce</option>
+          <option>Immigration Services</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>What do you need help with?</label>
+        <textarea placeholder="Tell me about your business, current SEO situation, and what you're hoping to achieve..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Send Message &rarr;</button>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2024 Orly Momongan. Local SEO Specialist.</p>
+    <div class="footer-links">
+      <a href="#" onclick="showPage('home');return false;">Home</a>
+      <a href="#" onclick="showPage('services');return false;">Services</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+// ---- IMAGES ----
+// Loaded from external script tag (injected below)
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const navLink = document.getElementById('nav-' + id);
+  if (navLink) navLink.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+function handleSubmit() {
+  const btn = event.target;
+  btn.textContent = 'Sending...';
+  setTimeout(() => {
+    window.location.href = 'mailto:momonganorlyig@gmail.com?subject=SEO Inquiry from Portfolio';
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#166534';
+  }, 400);
+}
+
+function buildPages() {
+  if (typeof IMGS === 'undefined') return;
+
+  const blogArticles = [
+    {
+      title: "Why Minimal Waste Packaging Is Becoming a Competitive Advantage",
+      tag: "Food Service / E-commerce",
+      desc: "How sustainable packaging is shifting from a niche concern to a mainstream business differentiator for food service brands.",
+      url: "https://supplycaddy.com/blogs/delivered/why-minimal-waste-packaging-is-becoming-a-competitive-advantage",
+      img: IMGS.packaging
+    },
+    {
+      title: "From Parking-Lot Pop-Up to Global Phenomenon: Jim Bittick's Leadership at Dave's Hot Chicken",
+      tag: "Food Service / Leadership",
+      desc: "An interview-style deep dive into how Jim Bittick's journey from the ground up shaped his leadership philosophy at one of America's fastest-growing fast food chains.",
+      url: "https://supplycaddy.com/blogs/delivered/how-did-jim-bittick-s-journey-from-the-ground-up-shape-his-leadership-at-dave-s-hot-chicken",
+      img: IMGS.dave
+    },
+    {
+      title: "Power Point Placement Tips for New Homes and Renovations",
+      tag: "Electrical / Home Services",
+      desc: "A practical guide to strategic power point placement in new builds and renovations, written to capture high-intent local search traffic for an electrical contractor.",
+      url: "https://t42electrical.com.au/power-point-placement/",
+      img: IMGS.powerpoint
+    },
+    {
+      title: "Top 5 Plumbing Emergencies That Require an Immediate 24/7 Plumber",
+      tag: "Plumbing / Local Services",
+      desc: "An urgency-driven, locally optimized article targeting emergency plumbing keywords for a Phoenix, Arizona plumbing company.",
+      url: "https://customplumbingaz.com/top-5-plumbing-emergencies-that-require-an-immediate-24-7-plumber/",
+      img: IMGS.plumbing
+    },
+    {
+      title: "How Trump Immigration Policy Is Quietly Changing Green Card Marriage Procedures",
+      tag: "Immigration Law",
+      desc: "A timely, research-backed piece explaining complex immigration policy changes in plain language for an immigration law firm's target audience.",
+      url: "https://360immigrationlaw.com/how-trump-immigration-policy-is-quietly-changing-green-card-marriage-procedures/",
+      img: IMGS.immigration
+    },
+    {
+      title: "Is It Illegal to Hide a Bank Account From Child Support?",
+      tag: "Family Law",
+      desc: "High-intent legal content targeting people searching for answers about asset hiding in child support cases, written for a family law firm.",
+      url: "https://farberlawpa.com/is-it-illegal-to-hide-a-bank-account-from-child-support/",
+      img: IMGS.bank
+    }
+  ];
+
+  // Home work cards (3 items)
+  const hwc = document.getElementById('homeWorkCards');
+  if (hwc) {
+    const workItems = [
+      { img: IMGS.map5, title: "Before: 20+ Across All Positions", sub: "Local SEO / Sydney Plumber" },
+      { img: IMGS.map3, title: "After: Top 1-3 Map Pack Rankings", sub: "Local SEO / Sydney Plumber" },
+      { img: IMGS.gsc1, title: "15.9K Clicks in 16 Months", sub: "SEO Content Strategy" }
+    ];
+    hwc.innerHTML = workItems.map(w => `
+      <div class="work-card" onclick="showPage('work')" style="cursor:pointer;">
+        <img src="${w.img}" alt="${w.title}">
+        <div class="work-card-info"><h4>${w.title}</h4><p>${w.sub}</p></div>
+      </div>
+    `).join('');
+  }
+
+  // Home blog cards (3)
+  const hbc = document.getElementById('homeBlogCards');
+  if (hbc) {
+    hbc.innerHTML = blogArticles.slice(0,3).map(a => `
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="${a.img}" alt="${a.title}"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">${a.tag}</div>
+          <h3>${a.title}</h3>
+          <p>${a.desc.substring(0,100)}...</p>
+          <a href="${a.url}" target="_blank" rel="noopener">Read Article &rarr;</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Blog full grid
+  const bfg = document.getElementById('blogFullGrid');
+  if (bfg) {
+    bfg.innerHTML = blogArticles.map(a => `
+      <div class="blog-card">
+        <div class="blog-card-img"><img src="${a.img}" alt="${a.title}"></div>
+        <div class="blog-card-body">
+          <div class="blog-tag">${a.tag}</div>
+          <h3>${a.title}</h3>
+          <p>${a.desc}</p>
+          <a href="${a.url}" target="_blank" rel="noopener">Read Article &rarr;</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // GSC showcase
+  const gsc = document.getElementById('gscShowcase');
+  if (gsc) {
+    gsc.innerHTML = `
+      <img src="${IMGS.gsc1}" alt="GSC Performance 1" style="border-radius:4px;border:1px solid var(--line);">
+      <img src="${IMGS.gsc2}" alt="GSC Performance 2" style="border-radius:4px;border:1px solid var(--line);">
+    `;
+  }
+
+  // GSC more
+  const gscMore = document.getElementById('gscMore');
+  if (gscMore) {
+    gscMore.innerHTML = `
+      <img src="${IMGS.gsc3}" alt="GSC Performance 3" style="border-radius:4px;border:1px solid var(--line);">
+      <img src="${IMGS.gsc4}" alt="GSC Performance 4" style="border-radius:4px;border:1px solid var(--line);">
+      <img src="${IMGS.gsc5}" alt="GSC Performance 5" style="border-radius:4px;border:1px solid var(--line);">
+    `;
+    gscMore.style.gridTemplateColumns = 'repeat(3,1fr)';
+  }
+
+  // Map Before/After
+  const mb = document.getElementById('mapBefore');
+  if (mb) mb.innerHTML = `<img src="${IMGS.map5}" alt="Before - all 20+ positions" style="width:100%;display:block;">`;
+  const ma = document.getElementById('mapAfter');
+  if (ma) ma.innerHTML = `<img src="${IMGS.map3}" alt="After - top 3 positions" style="width:100%;display:block;">`;
+
+  // GBP grid
+  const gbp = document.getElementById('gbpGrid');
+  if (gbp) {
+    const gbpItems = [
+      { img: IMGS.ss1, name: "Powerhub Electrical", detail: "5.0 stars · 123 reviews · Epping, NSW" },
+      { img: IMGS.ss2, name: "Custom Plumbing of Arizona", detail: "4.7 stars · 654 reviews · Phoenix, AZ" },
+      { img: IMGS.ss3, name: "Exceed Plumbing & Air Con", detail: "5.0 stars · 214 reviews · Payneham South, SA" },
+      { img: IMGS.ss4, name: "Plumbwell Plumbing Services", detail: "4.9 stars · 368 reviews · Marrickville, NSW" },
+      { img: IMGS.ss5, name: "Hello Plumbing", detail: "4.9 stars · 915 reviews · Dee Why, NSW" },
+    ];
+    gbp.innerHTML = gbpItems.map(g => `
+      <div class="gbp-card">
+        <img src="${g.img}" alt="${g.name}">
+        <div class="gbp-card-info"><strong>${g.name}</strong><span>${g.detail}</span></div>
+      </div>
+    `).join('');
+  }
+
+  // Map grid more
+  const mgm = document.getElementById('mapGridMore');
+  if (mgm) {
+    mgm.innerHTML = `
+      <img src="${IMGS.map1}" alt="Rank grid before">
+      <img src="${IMGS.map2}" alt="Rank grid after">
+      <img src="${IMGS.map4}" alt="Rank grid comparison">
+      <img src="${IMGS.ss6}" alt="GBP listing">
+    `;
+  }
+}
+
+// Wait for images to load
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof IMGS !== 'undefined') {
+    buildPages();
+  }
+});
+</script>
+<script src="images.js" onload="buildPages()"></script>
+</body>
+</html>
